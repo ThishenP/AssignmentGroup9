@@ -23,7 +23,7 @@ public class PlatformSpawner : MonoBehaviour
         {
             platforms[i] = Instantiate(platformPrefab, poolPos, Quaternion.identity);
         }
-        spawnPlatform();
+        spawnPlatform(20);
     }
 
 
@@ -42,15 +42,15 @@ public class PlatformSpawner : MonoBehaviour
         if (platformEndPos <= spawnTriggerXpos)
         {
             Debug.Log(platformEndPos);
-            spawnPlatform();
+            spawnPlatform(15);
         }
     }
 
-    private void spawnPlatform()
+    private void spawnPlatform(float xPos)
     {   
         float randHeight = Random.Range(-4.5f, 1.5f);
         float randLength = Random.Range(0.5f, 0.7f);
-        platforms[count].transform.position = new Vector2(15,randHeight);
+        platforms[count].transform.position = new Vector2(xPos,randHeight);
         platforms[count].transform.localScale = new Vector2(randLength, platforms[count].transform.localScale.y);
         count++;
         if (count>=amountOfPrefabs)
@@ -58,4 +58,6 @@ public class PlatformSpawner : MonoBehaviour
             count = 0;
         }
     }
+
+    
 }
