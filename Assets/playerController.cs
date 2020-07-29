@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour
     public float jumpMultiplier=20;
     public Image jumpBar;
     public GameObject startText;
+    public GameObject teeth;
     private float jumpPower=0;
     private float startSize;
     private float startTimer=0;
@@ -31,6 +32,7 @@ public class playerController : MonoBehaviour
             control.instance.started = true;
             GetComponent<Rigidbody2D>().gravityScale = startGravity;
             startText.SetActive(false);
+            StartCoroutine(Move(new Vector2(-7.5f,-1)));
         }
         if (control.instance.gameOver==false&&control.instance.started==true)
         {
@@ -74,5 +76,20 @@ public class playerController : MonoBehaviour
         }
        
 
+    }
+
+    IEnumerator Move(Vector2 target)
+    {
+
+        float timeSinceStart = 0;
+        float waitTime = 0.5f;
+        while (timeSinceStart < waitTime)
+        {
+            teeth.transform.position = Vector2.Lerp(teeth.transform.position, target, 0.008f);
+            timeSinceStart += Time.deltaTime;
+            yield return null;
+        }
+        teeth.transform.position = target;
+        yield return null;
     }
 }
