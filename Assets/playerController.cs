@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour
     private float startSize;
     private float startTimer=0;
     private float startGravity;
+    public AudioSource music;
     
 
 
@@ -33,6 +34,7 @@ public class playerController : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = startGravity;
             startText.SetActive(false);
             StartCoroutine(Move(new Vector2(-7.5f,-1)));
+            music.Play();
         }
         if (control.instance.gameOver==false&&control.instance.started==true)
         {
@@ -66,6 +68,7 @@ public class playerController : MonoBehaviour
                 if (control.instance.canJump == true)
                 {
                     GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpPower * jumpMultiplier));
+                    control.instance.Jump();
                 }
             }
         }
