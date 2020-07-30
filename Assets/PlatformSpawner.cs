@@ -49,7 +49,7 @@ public class PlatformSpawner : MonoBehaviour
     private void spawnPlatform(float xPos)
     {   
         float randHeight = Random.Range(-4.5f, 1.5f);
-        float randLength = Random.Range(0.5f, 0.7f);
+        float randLength = Random.Range(0.7f,1.5f);
         platforms[count].transform.position = new Vector2(xPos,randHeight);
         platforms[count].transform.localScale = new Vector2(randLength, platforms[count].transform.localScale.y);
         count++;

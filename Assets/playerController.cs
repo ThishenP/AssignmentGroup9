@@ -16,6 +16,8 @@ public class playerController : MonoBehaviour
     private float startTimer=0;
     private float startGravity;
     public AudioSource music;
+   
+    
     
 
 
@@ -73,9 +75,12 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if (transform.position.y < -7 || transform.position.x < -9.6f)
+        if ((transform.position.y < -7 || transform.position.x < -9.6f)&&control.instance.gameOver==false)
         {
+            
             control.instance.EndGame();
+            
+           
         }
        
 

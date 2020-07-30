@@ -36,6 +36,7 @@ public class control : MonoBehaviour
     public ParticleSystem part;
     private float timeSinceBounce=0;
     private float score;
+    public AudioSource effectSource;
 
     void Update()
     {
@@ -50,6 +51,7 @@ public class control : MonoBehaviour
         }
         
     }
+   
 
     public void Jump()
     {
@@ -70,6 +72,8 @@ public class control : MonoBehaviour
 
     public void EndGame()
     {
+        effectSource.Play();
+        Debug.Log("sound");
         gameOver = true;
         hud.SetActive(false);
         gameOverScreen.SetActive(true);
